@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+    - block:
+      - name: Failing task
+        command: /bin/false
+      rescue:
+        - debug:
+            msg: Rescued task
+
+    - name: Another failing task
+      command: /bin/false
+      ignore_errors: true
+
